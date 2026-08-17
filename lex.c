@@ -260,6 +260,8 @@ yylex(int cf)
 				goto Done;
 			/* FALLTHROUGH */
 		case SHEREDELIM:
+			if((unsigned int)c==ORD(',')){
+				goto Done;}
 			if (ctype(c, C_LEX1))
 				goto Done;
 			break;
@@ -969,6 +971,8 @@ yylex(int cf)
 		/* free word */
 		Xfree(ws, wp);
 		/* no word, process LEX1 character */
+		if((unsigned int)c==ORD(',')){
+		return LOGAND;}
 		if (((unsigned int)c == ORD('|')) ||
 		    ((unsigned int)c == ORD('&')) ||
 		    ((unsigned int)c == ORD(';')) ||
